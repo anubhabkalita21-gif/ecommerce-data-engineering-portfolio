@@ -1,0 +1,4 @@
+pandas>=2.2,<3
+duckdb>=1.1,<2
+pyarrow>=18,<25
+pytest>=8,<10

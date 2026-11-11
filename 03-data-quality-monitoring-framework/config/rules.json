@@ -1,0 +1,83 @@
+{
+  "orders": [
+    {
+      "name": "required_columns",
+      "type": "required_columns",
+      "columns": [
+        "order_id",
+        "customer_id",
+        "product_id",
+        "order_date",
+        "quantity",
+        "unit_price",
+        "order_status"
+      ]
+    },
+    {
+      "name": "order_id_unique",
+      "type": "unique",
+      "column": "order_id"
+    },
+    {
+      "name": "quantity_positive",
+      "type": "greater_than",
+      "column": "quantity",
+      "value": 0
+    },
+    {
+      "name": "valid_status",
+      "type": "accepted_values",
+      "column": "order_status",
+      "values": [
+        "delivered",
+        "shipped",
+        "processing",
+        "cancelled",
+        "returned"
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "name": "customer_id_unique",
+      "type": "unique",
+      "column": "customer_id"
+    },
+    {
+      "name": "email_not_null",
+      "type": "not_null",
+      "column": "email"
+    }
+  ],
+  "products": [
+    {
+      "name": "product_id_unique",
+      "type": "unique",
+      "column": "product_id"
+    },
+    {
+      "name": "price_nonnegative",
+      "type": "greater_equal",
+      "column": "unit_price",
+      "value": 0
+    }
+  ],
+  "payments": [
+    {
+      "name": "payment_id_unique",
+      "type": "unique",
+      "column": "payment_id"
+    },
+    {
+      "name": "valid_payment_status",
+      "type": "accepted_values",
+      "column": "payment_status",
+      "values": [
+        "paid",
+        "refunded",
+        "failed",
+        "pending"
+      ]
+    }
+  ]
+}
