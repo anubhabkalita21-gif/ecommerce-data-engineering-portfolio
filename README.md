@@ -5,4 +5,3 @@ Three runnable projects using a shared synthetic dataset.
 2. **Automated ETL Data Warehouse** — dimensional modelling, SQL, DuckDB, optional Airflow.
 3. **Data Quality Monitoring Framework** — configurable rules, JSON reports, Pytest.
 
-Start with any project folder. Each has its own requirements and README. Dataset contains synthetic records only.
