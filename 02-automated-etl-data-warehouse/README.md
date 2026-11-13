@@ -43,4 +43,36 @@ unit_price        date_key (FK)     month
               started_at
               status
               rows_loaded
+```## Incremental ETL Processing
+
+The warehouse supports full-refresh and incremental loading.
+
+### Full Refresh
+
+```powershell
+python run_warehouse.py --data-dir ..\datasets --db-path warehouse.duckdb
 ```
+
+### Incremental Loading
+
+```powershell
+python run_warehouse.py --data-dir ..\datasets --db-path warehouse.duckdb --incremental
+```
+
+Features:
+- Loads only previously unseen orders.
+- Prevents duplicate order IDs.
+- Preserves historical fact records.
+- Updates dimension tables.
+- Rebuilds monthly sales analytics.
+- Logs every successful execution.
+
+Note: Incremental loading is append-only. Updates to existing orders are not detected.
+
+## Automated Testing
+
+Tests cover:
+- Warehouse creation.
+- Net sales calculations.
+- Incremental order loading.
+- Duplicate prevention.
