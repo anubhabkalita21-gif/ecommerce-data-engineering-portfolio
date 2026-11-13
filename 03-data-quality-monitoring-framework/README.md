@@ -9,40 +9,34 @@ This project implements a reusable data quality validation engine for monitoring
 It validates multiple datasets independently, calculates quality metrics, identifies failed records, and generates reports for analysis and automated workflows.
 
 ## Architecture
+```mermaid
+flowchart TD
+    A["E-Commerce CSV Datasets"] --> B["Data Ingestion<br/>Pandas"]
+    C["JSON Validation Rules<br/>rules.json"] --> D["Configuration Loader"]
+    B --> E["Data Quality Engine"]
+    D --> E
 
-```text
-              CSV Source Datasets
-                      |
-                      v
-              Data Ingestion
-                (Pandas)
-                      |
-                      v
-             Configuration Loader
-                (rules.json)
-                      |
-                      v
-             Validation Engine
-                (Python)
-                      |
-          +-----------+-----------+
-          |           |           |
-          v           v           v
-      Null Checks  Uniqueness  Value Checks
-          |           |           |
-          +-----------+-----------+
-                      |
-                      v
-              Quality Metrics
-                      |
-               +------+------+
-               |             |
-               v             v
-           JSON Report   HTML Dashboard
-               |
-               v
-          CI Exit Status
+    E --> F["Required Column Checks"]
+    E --> G["Null & Uniqueness Checks"]
+    E --> H["Accepted Values Checks"]
+    E --> I["Numeric Threshold Checks"]
+
+    F --> J["Quality Metrics & Summary"]
+    G --> J
+    H --> J
+    I --> J
+
+    J --> K["JSON Quality Report"]
+    J --> L["HTML Dashboard"]
+    J --> M["CI Exit Status"]
+
+    style E fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style L fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style M fill:#fef3c7,stroke:#d97706,color:#78350f
 ```
+
+
+
 
 ## Features
 

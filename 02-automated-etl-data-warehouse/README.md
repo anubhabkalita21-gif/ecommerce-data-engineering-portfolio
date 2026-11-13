@@ -3,6 +3,30 @@
 An end-to-end data engineering project that transforms raw e-commerce data into a structured dimensional data warehouse using Python, Pandas, SQL and DuckDB.
 
 ## Architecture
+```mermaid
+flowchart TD
+    A["E-Commerce CSV Sources<br/>Orders, Customers, Products"] --> B["Python + Pandas<br/>Data Ingestion"]
+    B --> C["Data Cleaning & Transformation"]
+    C --> D["Dimensional Modelling"]
+
+    D --> E["dim_customer"]
+    D --> F["dim_product"]
+    D --> G["dim_date"]
+    D --> H["fact_sales"]
+
+    E --> I[("DuckDB Warehouse")]
+    F --> I
+    G --> I
+    H --> I
+
+    I --> J["mart_monthly_sales"]
+    I --> K["etl_run_log"]
+    I --> L["SQL Analytics & Reporting"]
+
+    style I fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style H fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style J fill:#fef3c7,stroke:#d97706,color:#78350f
+```
 ### Dimensional Warehouse Schema
 
 ```text
